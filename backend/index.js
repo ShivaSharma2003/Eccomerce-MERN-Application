@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import express from 'express'
 import CreateUserFunction from './Routes/UserRoute.js'
+import mongoose from 'mongoose'
 
 const app = express()
 
@@ -13,6 +14,19 @@ app.use(express.json())
 
 // Connecting Database
 connectDatabase()
+const db = mongoose.connection
+
+db.on("error", (error) => {
+    console.log(error)
+    console.log("Error Occured")
+})
+db.once("open", () => {
+    console.log("Database Successfully Connected")
+})
+
+db.once("close", () => {
+    console.log("database Disconnected")
+})
 
 // routes api
 app.get("/", (req, res) => {

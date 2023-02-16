@@ -38,10 +38,17 @@ const UserSchema = mongoose.Schema({
     }
 )
 
-UserSchema.pre("save", (async function(){
+UserSchema.pre("save", (async function(next){
     const salt = await bcryptjs.genSalt(8) 
     this.password = await bcryptjs.hash(this.password, salt)
+    next()
 }))
+
+UserSchema.methods.ComparePassword = async function (password){
+    return await bcryptjs.compare(password , this.password)
+} 
+
+//retrun bool true && false
 
 const user = mongoose.model("User", UserSchema)
 

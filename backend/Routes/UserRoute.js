@@ -1,30 +1,17 @@
 import express from "express";
-import user from '../Models/UserModel.js'
+import {RegisterUser , LoginUser , FetchUser} from '../Controller/UserController.js'
+import Authorize from '../MiddleWare/AuthorizeMiddleware.js'
+
 const router = express.Router()
 
-// http:localhost:4000/api/post/user
-router.post('/api/user/post', async (req, res) => {
-    const { email, password, gender, userName } = req.body
-    try {
-        const isEmailExist = await user.findOne({ email: email })
-        if (isEmailExist) {
-            res.status(403).json({errorMessage : "email already exists"})
-        }
-        const Newuser = await user.create(
-            {
-                email: email,
-                password: password,
-                Username: userName,
-                gender: gender,
-            }
-        )
-        if (Newuser) {
-            res.status(200).json(Newuser)
-        } else {
-            console.log("Something wrong Happend")
-        }
-    } catch (error) {
-        console.log(error)
-    }
-})
+// http:localhost:4000/api/user/post/register
+router.post('/api/user/post/register',RegisterUser)
+
+
+// http://localhost:4000/api/user/post/login
+router.post("/api/user/post/login", LoginUser)
+
+
+// http://localhost:4000/api/user/fetch
+router.get('/api/user/fetch', Authorize, FetchUser)
 export default router;

@@ -1,7 +1,10 @@
 -----------------------------------------------------------------
-1 Authorization --Signup
-2 Authentication --Signin
-3 Routes //API CALLs ENDPOINST
+<!-- 1 Authorization --Signup -------------------------------------/ -->
+<!-- 2 Authentication --Signin ----------------------------------- -->
+<!-- 3 Fetch USer -- By token -->
+<!-- 3 Routes //API CALLs ENDPOINST  -->
+
+Add Product --- If Admin 
 4 Fetch Products
 5 ItemID Product
 6 Add to Cart 
@@ -38,3 +41,35 @@ password , email === account password or email
 update delete ---> hash 
 
 -------------------------------------------------
+<!-- sign in process -->
+email address match 
+
+password match ---> password hash
+hash decode ==> password and decoded hash paasword are same as password
+error email or password is incoorect
+
+login POST -----> 
+
+---------------------------------------------------
+// "hsavcyhbsduvbedebfesdvnsebdvsbdvsbdvbsd"  this is example token
+
+// {id} ---> destructuring object
+
+// const object = {name : "shiva",
+// password  :'"sbcuvbd",
+// id : "fsghjdfghfdshifgkds"}
+
+// object.name  --> "shiva"
+// {name} = object "shiva"
+
+// const id = hbscusdbv
+// {id : identity} == {identidity}
+
+
+--------------------------------------------------------------------------------
+token = get account ===> id
+middleware 
+// Bearer gducidshgyuguiodfviubhnkdofubhjjdkfoihbjssdjfkisgvwdedfioiwudhyvgbhj 
+// split(" ") --> array -->[Bearer , fghsjkjhgfghjkjhgvhj]
+
+<!-- MVC -->
