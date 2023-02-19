@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  return (
-    <div>This is Home</div>
-  )
-}
+  const navigate = useNavigate();
+  const [Account, setAccount] = useState();
 
-export default Home
+  useEffect(() => {
+    if (!Account) {
+      navigate("/auth/signup");
+    }
+  }, []);
+
+  return <div>This is Home</div>;
+};
+
+export default Home;
