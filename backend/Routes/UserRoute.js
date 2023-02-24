@@ -14,4 +14,8 @@ router.post("/api/user/post/login", LoginUser)
 
 // http://localhost:4000/api/user/fetch
 router.get('/api/user/fetch', Authorize, FetchUser)
+
+router.delete('/api/user/delete' , )
+
+
 export default router;

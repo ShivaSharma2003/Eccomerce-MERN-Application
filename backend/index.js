@@ -2,7 +2,7 @@ import { connectDatabase } from './mongo.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import express from 'express'
-import CreateUserFunction from './Routes/UserRoute.js'
+import CreateUserRouter from './Routes/UserRoute.js'
 import mongoose from 'mongoose'
 
 const app = express()
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
     res.status()
 })
 
-app.use('/', CreateUserFunction)
+app.use('/', CreateUserRouter)
 
 // listening server
 app.listen(process.env.PORT, (req, res) => {

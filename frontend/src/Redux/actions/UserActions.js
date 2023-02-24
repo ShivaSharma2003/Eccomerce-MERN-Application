@@ -17,4 +17,20 @@ const RegisterUserAction = (formData) => async (dispatch) => {
     }
 }
 
-export { RegisterUserAction }
+const SignInUserAction = (credentials) => async (dispatch) => {
+    try {
+        dispatch({ type: user.USER_SIGNIN_REQUEST })
+        const config = {
+            email: credentials.email,
+            password: credentials.password
+        }
+        const { data } = await axios.post('api/user/post/login', config)
+        localStorage.setItem('token', data.token)
+        dispatch({ type: user.USER_SIGIN_SUCCESS, data: data });
+    } catch (error) {
+        dispatch({ type: user.USER_SIGIN_FAILS, error: error.message })
+        console.log(error)
+    }
+}
+
+export { RegisterUserAction, SignInUserAction }
